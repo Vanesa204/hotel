@@ -8,14 +8,14 @@ import java.util.Objects;
 public class Passengers {
     
     private int NPasajero;
-    private long dni;
+    private String dni;
     private LocalDate fechaNacimiento;
     private String nombre;
     private String apellido;
     private String telefono;
     private String mail;
 
-    public Passengers(int NPasajero, long dni, LocalDate fechaNacimiento, String nombre, String apellido, String telefono, String mail) {
+    public Passengers(int NPasajero, String dni, LocalDate fechaNacimiento, String nombre, String apellido, String telefono, String mail) {
         this.NPasajero = NPasajero;
         this.dni = dni;
         this.fechaNacimiento = fechaNacimiento;
@@ -23,6 +23,10 @@ public class Passengers {
         this.apellido = apellido;
         this.telefono = telefono;
         this.mail = mail;
+    }
+
+    public Passengers() {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public int getNPasajero() {
@@ -33,11 +37,11 @@ public class Passengers {
         this.NPasajero = NPasajero;
     }
 
-    public long getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(long dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 

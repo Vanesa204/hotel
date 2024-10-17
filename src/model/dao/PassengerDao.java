@@ -1,5 +1,6 @@
-package dao;
+package model.dao;
 
+import model.dao.Dao;
 import model.Passengers;
 
 
