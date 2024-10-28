@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.List;
+import model.Room;
 import model.dao.mysql.PassengersDaoImpl;
 
 
@@ -18,7 +19,7 @@ public class Program {
   
     public static void main(String[] args) {
         Passengers p = new Passengers();
-       
+      
         Connection cn = null;
      
         // PreparedStatement pst = null;
@@ -63,9 +64,12 @@ public class Program {
        }finally{
             cn = null;
         
-    }
-   view.Passengers pForm = new view.Passengers();
-      pForm.setVisible(true); 
+    } 
+   
+   view.ProgramaHotel hForm = new view.ProgramaHotel();
+     hForm.setVisible(true); 
+      
+ 
     }
      
 }

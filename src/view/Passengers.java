@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.dao.PassengerDao;
@@ -28,11 +29,13 @@ public class Passengers extends javax.swing.JFrame {
         dao = new PassengersDaoImpl();
       
         initComponents();
-
+        nPasajero.setEditable(false);  
         this.setExtendedState(this.MAXIMIZED_BOTH);
           model = (DefaultTableModel) tablePassenger.getModel();
         loadPassengerData(); //para cargar los datos al iniciar
           addTableSelectionListener(); //agregar el listener despues de cargar
+          ocultarComponente();
+             setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     public void loadPassengerData() {
         List<model.Passengers> passengers = dao.getAll();
@@ -58,6 +61,12 @@ public class Passengers extends javax.swing.JFrame {
                 }
             }
         });
+    }
+    private void ocultarComponente(){
+           ComboBoxHabitacion.setVisible(false);
+           jLabel10.setVisible(false);
+            jLabel8.setVisible(false);
+             jLabel7.setVisible(false);
     }
     
 
@@ -95,10 +104,12 @@ public class Passengers extends javax.swing.JFrame {
         mail = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         ComboBoxHabitacion = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
 
         jButton2.setText("jButton2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 0, 51));
 
         tablePassenger.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -135,7 +146,7 @@ public class Passengers extends javax.swing.JFrame {
 
         jLabel2.setText("DNI");
 
-        jLabel3.setText("Fecha de Nacimiento");
+        jLabel3.setText("Fecha de Nacimiento ");
 
         jLabel4.setText("Nombre");
         jLabel4.setToolTipText("");
@@ -175,6 +186,7 @@ public class Passengers extends javax.swing.JFrame {
 
         dni.setName("dni"); // NOI18N
 
+        fechaNacimiento.setToolTipText("AAAA-MM-DD");
         fechaNacimiento.setName("fechaNacimiento"); // NOI18N
 
         nombre.setName("nombre"); // NOI18N
@@ -205,6 +217,9 @@ public class Passengers extends javax.swing.JFrame {
             }
         });
 
+        jLabel11.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel11.setText("AAAA-MM-DD");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -225,8 +240,10 @@ public class Passengers extends javax.swing.JFrame {
                                     .addComponent(dni, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(fechaNacimiento)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -298,7 +315,8 @@ public class Passengers extends javax.swing.JFrame {
                         .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
@@ -389,7 +407,7 @@ public class Passengers extends javax.swing.JFrame {
 
     private void ButtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtModificarActionPerformed
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    //int id = Integer.parseInt(nPasajero.getText());
+    int id = Integer.parseInt(nPasajero.getText());
     String dn = dni.getText();
     LocalDate fechaNac = LocalDate.parse(fechaNacimiento.getText(), formatter);
     String nom = nombre.getText();
@@ -399,7 +417,7 @@ public class Passengers extends javax.swing.JFrame {
     //String habN = comboBoxHabitacion.getSelectedItem().toString(); // Si tienes un ComboBox para la habitación
 
     model.Passengers p = new model.Passengers();
-  //  p.setNPasajero(id);
+    p.setNPasajero(id);
     p.setDni(dn);
     p.setFechaNacimiento(fechaNac);
     p.setNombre(nom);
@@ -496,6 +514,7 @@ public class Passengers extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

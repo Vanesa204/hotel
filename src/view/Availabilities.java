@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Usuario
@@ -15,6 +17,7 @@ public class Availabilities extends javax.swing.JFrame {
      */
     public Availabilities() {
         initComponents();
+           setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**

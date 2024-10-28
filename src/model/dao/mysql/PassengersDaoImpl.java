@@ -114,7 +114,7 @@ public class PassengersDaoImpl implements PassengerDao {
         try {
               Class.forName("com.mysql.cj.jdbc.Driver");
               cn = DriverManager.getConnection(url, user, password);
-              System.out.println(" traer pasajeros");
+              System.out.println(" Lista Actualizada");
              pst = cn.prepareStatement(sqlSelect);//("SELECT * FROM passenger");
              rs = pst.executeQuery();
             while (rs.next()) {
@@ -158,8 +158,7 @@ public class PassengersDaoImpl implements PassengerDao {
          // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         //String formattedDate = p.getFechaNacimiento().format(formatter);     
         pst.setString(1, p.getDni());
-   
-      pst.setDate(2, sqlDate);
+        pst.setDate(2, sqlDate);
         pst.setString(3, p.getNombre());
         pst.setString(4, p.getApellido());
         pst.setString(5, p.getTelefono());
@@ -193,8 +192,8 @@ public class PassengersDaoImpl implements PassengerDao {
          
           pst = cn.prepareStatement(sqlDelete);
           
-          int id = 0;
-           pst.setInt(1,id);
+          
+           pst.setInt(1,p.getNPasajero());
         int rowsAffected = pst.executeUpdate();
         
         if (rowsAffected > 0) {

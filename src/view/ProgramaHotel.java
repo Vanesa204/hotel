@@ -4,19 +4,35 @@
  */
 package view;
 
+import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import static java.awt.GridBagConstraints.BOTH;
+import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.awt.Insets;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Usuario
  */
 public class ProgramaHotel extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ProgramaHotel
-     */
+    FondoPanel fondo = new FondoPanel();
+    
     public ProgramaHotel() {
+        
+        this.setContentPane(fondo);
+        //setResizable(false); //es para que se mantenga el tamaño original de la ventana 
+        // con el tilde en opaque en panel se hace transparente
         initComponents();
-    }
 
+        
+    
+    }
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,84 +45,78 @@ public class ProgramaHotel extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        butRoom = new javax.swing.JButton();
+        butPassenger = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 153));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(51, 0, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Disponibilidades");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.setName("butAvailability"); // NOI18N
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jButton2.setText("Reservas");
+        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton2.setName("butReservations"); // NOI18N
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 10, 80, -1));
 
-        jButton3.setText("Habitaciones");
-        jButton3.setName("butRooms"); // NOI18N
+        butRoom.setText("Habitaciones");
+        butRoom.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        butRoom.setName("butRooms"); // NOI18N
+        butRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butRoomActionPerformed(evt);
+            }
+        });
+        jPanel1.add(butRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 10, 80, -1));
 
-        jButton4.setText("Pasajeros");
-        jButton4.setName("butPassengers"); // NOI18N
+        butPassenger.setText("Pasajeros");
+        butPassenger.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        butPassenger.setName("butPassengers"); // NOI18N
+        butPassenger.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butPassengerActionPerformed(evt);
+            }
+        });
+        jPanel1.add(butPassenger, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 10, 80, -1));
+        jPanel1.add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, -30, 50, 30));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 118, 500, 50));
 
+        jTextPane1.setBackground(new java.awt.Color(51, 0, 51));
         jTextPane1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 255)));
-        jTextPane1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jTextPane1.setForeground(new java.awt.Color(255, 0, 204));
+        jTextPane1.setFont(new java.awt.Font("Perpetua Titling MT", 0, 24)); // NOI18N
+        jTextPane1.setForeground(new java.awt.Color(255, 255, 255));
         jTextPane1.setText("\"Girls Hotel\"");
         jTextPane1.setToolTipText("");
         jScrollPane1.setViewportView(jTextPane1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
-        );
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 180, 40));
+        getContentPane().add(filler2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 40, 10));
+        getContentPane().add(filler3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 40, 10));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void butPassengerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butPassengerActionPerformed
+     view.Passengers pForm = new view.Passengers();
+     pForm.setVisible(true);        
+    }//GEN-LAST:event_butPassengerActionPerformed
+
+    private void butRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butRoomActionPerformed
+       view.Rooms rForm = new view.Rooms();
+       rForm.setVisible(true);       
+    }//GEN-LAST:event_butRoomActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,12 +154,30 @@ public class ProgramaHotel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton butPassenger;
+    private javax.swing.JButton butRoom;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler filler3;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
+
+class FondoPanel extends JPanel
+{
+    private Image imagen;
+    
+    @Override
+    public void paint (Graphics g)
+    {
+        imagen = new ImageIcon(getClass().getResource("/imagen/recepcionhotel.png")).getImage();
+        g.drawImage(imagen,0 ,0, getWidth(), getHeight(), this);
+        setOpaque(false);
+        super.paint(g);
+    }
 }
+}
+
